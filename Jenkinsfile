@@ -4,17 +4,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from your version control system (e.g., Git)
                 checkout scm
             }
         }
 
         stage('Build and Test') {
             steps {
-                // Change into the 'Demo' directory
                 dir('demo') {
-                    // Run Maven test command
                     sh 'mvn test'
+                    
                 }
             }
         }
@@ -22,8 +20,8 @@ pipeline {
 
     post {
         always {
-            // Clean up or perform actions that should happen regardless of the build result
-            echo 'Build completed!'
+            // Archive the HTML report in the 'Demo/target/surefire-reports' directory
+            archiveArtifacts 'demo/target/site/*.html'
         }
     }
 }
