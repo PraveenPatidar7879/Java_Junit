@@ -21,7 +21,7 @@ pipeline {
     post {
         always {
             // Archive the HTML report in the 'Demo/target/surefire-reports' directory
-            archiveArtifacts 'demo/target/site/*.html'
+            archiveArtifacts 'demo/target/site/**/*.html'
         }
     }
 }
