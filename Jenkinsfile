@@ -11,8 +11,11 @@ pipeline {
 
         stage('Build and Test') {
             steps {
-                // Run Maven test command
-                sh 'mvn test'
+                // Change into the 'Demo' directory
+                dir('demo') {
+                    // Run Maven test command
+                    sh 'mvn test'
+                }
             }
         }
     }
